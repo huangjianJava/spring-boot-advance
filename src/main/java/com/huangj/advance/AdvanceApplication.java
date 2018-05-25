@@ -1,12 +1,12 @@
-package com.huangj.springbootadvance;
+package com.huangj.advance;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootAdvanceApplication {
+public class AdvanceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootAdvanceApplication.class, args);
+		SpringApplication.run(AdvanceApplication.class, args);
 	}
 }
