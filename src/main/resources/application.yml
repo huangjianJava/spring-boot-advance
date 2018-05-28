@@ -1,2 +1,26 @@
-#server:
-#  port: 8081
+server:
+  port: 8082
+
+# 测试读取配置文件
+person:
+  account: hj001
+  password: 123456
+
+# 激活指定环境文件
+#spring:
+#  profiles:
+#    active: test
+
+---
+# 开发环境
+server:
+  port: 8083
+spring:
+  profiles: dev
+
+---
+# 生产环境
+server:
+  port: 8085
+spring:
+  profiles: prod

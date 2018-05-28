@@ -1,6 +1,9 @@
 package com.huangj.advance;
 
+import com.huangj.advance.dto.PersonConfig;
+import com.huangj.advance.model.WeChart;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 /**
@@ -10,12 +13,16 @@ import org.springframework.beans.factory.annotation.Value;
  */
 public class DemoBaseTest extends BaseTest {
 
-    @Value("${server.port}")
-    int port;
+    @Value("${person.account}")
+    String account;
+
+    @Autowired
+    PersonConfig personConfig;
 
     @Test
     public void testOne(){
-        System.out.println("port:" + port);
+        System.out.println("account:" + account);
+        System.out.println("personConfig:" + personConfig);
     }
 
 }
