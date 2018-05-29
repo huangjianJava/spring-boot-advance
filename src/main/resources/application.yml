@@ -1,3 +1,9 @@
+# 激活指定环境文件
+spring:
+  profiles:
+    active: test
+
+---
 server:
   port: 8082
 
@@ -5,11 +11,8 @@ server:
 person:
   account: hj001
   password: 123456
-
-# 激活指定环境文件
-#spring:
-#  profiles:
-#    active: test
+spring:
+  profiles: test
 
 ---
 # 开发环境

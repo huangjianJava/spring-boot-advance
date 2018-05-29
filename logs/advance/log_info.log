@@ -1,0 +1,15 @@
+[2018-05-29 16:47:52.084] [ INFO] [main] com.huangj.advance.AdvanceApplication Line:48  - Starting AdvanceApplication on DESKTOP-NUO31MR with PID 9592 (D:\MyGitHub\spring-boot-advance\target\classes started by Huangj in D:\MyGitHub\spring-boot-advance)
+[2018-05-29 16:47:52.087] [ INFO] [main] com.huangj.advance.AdvanceApplication Line:597 - The following profiles are active: prod
+[2018-05-29 16:47:53.554] [ INFO] [main] com.huangj.advance.AdvanceApplication Line:57  - Started AdvanceApplication in 1.878 seconds (JVM running for 2.204)
+[2018-05-29 16:50:49.385] [ INFO] [main] com.huangj.advance.AdvanceApplication Line:48  - Starting AdvanceApplication on DESKTOP-NUO31MR with PID 13544 (D:\MyGitHub\spring-boot-advance\target\classes started by Huangj in D:\MyGitHub\spring-boot-advance)
+[2018-05-29 16:50:49.387] [ INFO] [main] com.huangj.advance.AdvanceApplication Line:597 - The following profiles are active: prod
+[2018-05-29 16:50:50.662] [ INFO] [main] com.huangj.advance.AdvanceApplication Line:57  - Started AdvanceApplication in 1.563 seconds (JVM running for 1.853)
+[2018-05-29 16:53:25.903] [ INFO] [main] com.huangj.advance.AdvanceApplication Line:48  - Starting AdvanceApplication on DESKTOP-NUO31MR with PID 1600 (D:\MyGitHub\spring-boot-advance\target\classes started by Huangj in D:\MyGitHub\spring-boot-advance)
+[2018-05-29 16:53:25.905] [ INFO] [main] com.huangj.advance.AdvanceApplication Line:597 - The following profiles are active: prod
+[2018-05-29 16:53:27.192] [ INFO] [main] com.huangj.advance.AdvanceApplication Line:57  - Started AdvanceApplication in 1.575 seconds (JVM running for 1.854)
+[2018-05-29 16:53:41.669] [ INFO] [main] com.huangj.advance.AdvanceApplication Line:48  - Starting AdvanceApplication on DESKTOP-NUO31MR with PID 8148 (D:\MyGitHub\spring-boot-advance\target\classes started by Huangj in D:\MyGitHub\spring-boot-advance)
+[2018-05-29 16:53:41.672] [ INFO] [main] com.huangj.advance.AdvanceApplication Line:597 - The following profiles are active: prod
+[2018-05-29 16:53:42.927] [ INFO] [main] com.huangj.advance.AdvanceApplication Line:57  - Started AdvanceApplication in 1.547 seconds (JVM running for 1.836)
+[2018-05-29 16:56:09.859] [ INFO] [main] com.huangj.advance.AdvanceApplication Line:48  - Starting AdvanceApplication on DESKTOP-NUO31MR with PID 4812 (D:\MyGitHub\spring-boot-advance\target\classes started by Huangj in D:\MyGitHub\spring-boot-advance)
+[2018-05-29 16:56:09.861] [ INFO] [main] com.huangj.advance.AdvanceApplication Line:597 - The following profiles are active: test
+[2018-05-29 16:56:11.195] [ INFO] [main] com.huangj.advance.AdvanceApplication Line:57  - Started AdvanceApplication in 1.633 seconds (JVM running for 1.959)
