@@ -7,6 +7,11 @@ import org.springframework.stereotype.Repository;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * @author huangj
+ * @Description:  员工 dao
+ * @date 2018/5/31
+ */
 @Repository
 public class EmployeeDao {
 

@@ -19,6 +19,8 @@ spring:
     basename: i18n.messages   # 国际化配置文件设置
   thymeleaf:
     cache: false              # 禁用模板引擎的缓存
+  mvc:
+    date-format: yyyy-MM-dd   # 指定spring mvc的日期格式
 
 ---
 # 开发环境
