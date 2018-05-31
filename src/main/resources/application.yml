@@ -1,7 +1,7 @@
 # 激活指定环境文件
 spring:
   profiles:
-    active: test
+    active: dev
 
 ---
 server:
@@ -11,15 +11,23 @@ server:
 person:
   account: hj001
   password: 123456
+
+
 spring:
-  profiles: test
+  profiles: dev
+  messages:
+    basename: i18n.messages   # 国际化配置文件设置
+  thymeleaf:
+    cache: false              # 禁用模板引擎的缓存
+  mvc:
+    date-format: yyyy-MM-dd   # 指定spring mvc的日期格式
 
 ---
 # 开发环境
 server:
   port: 8083
 spring:
-  profiles: dev
+  profiles: test
 
 ---
 # 生产环境

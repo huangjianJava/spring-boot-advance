@@ -1,6 +1,11 @@
 package com.huangj.advance.config;
 
+import com.huangj.advance.component.LoginHandlerInterceptor;
+import com.huangj.advance.component.MyLocaleResolver;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -16,5 +21,19 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter{
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("login");
         registry.addViewController("/login.html").setViewName("login");
+        registry.addViewController("/main.html").setViewName("dashboard");
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LoginHandlerInterceptor())
+                .addPathPatterns("/**")
+                .excludePathPatterns("/","/login.html","/login/normal");
+    }
+
+    // 注入自定义的区域解析器
+    @Bean
+    public LocaleResolver localeResolver() {
+        return new MyLocaleResolver();
     }
 }

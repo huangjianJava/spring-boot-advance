@@ -65,7 +65,7 @@
 		</dependency>
 		<!-- end -->
 
-		<!--引入jquery-webjar-->
+		<!-- 引入jquery-webjar -->
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
@@ -73,11 +73,27 @@
 		</dependency>
 		<!-- end -->
 
-		<!--引入bootstrap-->
+		<!-- 引入bootstrap -->
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
 			<version>4.0.0</version>
+		</dependency>
+		<!-- end -->
+
+		<!-- apache类库 -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.3.2</version>
+		</dependency>
+		<!-- end -->
+
+		<!-- guava -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>22.0</version>
 		</dependency>
 		<!-- end -->
 
