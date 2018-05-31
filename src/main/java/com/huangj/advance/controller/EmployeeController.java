@@ -23,17 +23,56 @@ public class EmployeeController {
     @Autowired
     EmployeeDao employeeDao;
 
-    @PostMapping(value = "/employee")
-    public String addEmployee(Employee employee){
-        employeeDao.save(employee);
+    /**
+     * 删除指定员工信息
+     * @param id
+     * @return
+     */
+    @DeleteMapping(value = "/employee/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public String routeToEmployeeEditView(@PathVariable Integer id){
+        employeeDao.deleteById(id);
         return "redirect:/employees";
     }
 
+    /**
+     * 路由到员工编辑界面并填充员工信息
+     * @param id
+     * @param map
+     * @return
+     */
+    @GetMapping(value = "/employee/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public String routeToEmployeeEditView(@PathVariable Integer id ,ModelMap map){
+        Employee employee = employeeDao.findOneById(id);
+        map.addAttribute("employee",employee);
+        return "emp/addEmp";
+    }
+
+    /**
+     * 添加员工信息
+     * @param employee
+     * @return
+     */
+    @PostMapping(value = "/employee")
+    public String addOrUpdateEmployee(Employee employee){
+        employeeDao.saveOrUpdate(employee);
+        return "redirect:/employees";
+    }
+
+    /**
+     * 路由到员工添加界面
+     * @param map
+     * @return
+     */
     @GetMapping(value = "/employee",produces = MediaType.APPLICATION_JSON_VALUE)
     public String routeToEmployeeAddView(ModelMap map){
         return "emp/addEmp";
     }
 
+    /**
+     * 查询员工列表
+     * @param map
+     * @return
+     */
     @GetMapping(value = "/employees",produces = MediaType.APPLICATION_JSON_VALUE)
     public String queryAllEmployees(ModelMap map){
         // 查询所有的员工信息

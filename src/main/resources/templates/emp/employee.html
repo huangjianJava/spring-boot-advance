@@ -74,15 +74,17 @@
 								<td>[[${#dates.format(emp.birth, 'yyyy-MM-dd HH:mm')}]]</td>
 								<td>[[${emp.email}]]</td>
 								<td>
-									<a class="btn btn-sm btn-primary">编辑</a>
-									<button class="btn btn-sm btn-danger deleteBtn">删除</button>
+									<a class="btn btn-sm btn-primary" th:href="@{/employee/}+${emp.id}">编辑</a>
+									<button th:attr="del_uri=@{/employee/}+${emp.id}" class="btn btn-sm btn-danger deleteBtn">删除</button>
 								</td>
 							</tr>
 							</tbody>
-
 						</table>
 					</div>
 				</main>
+				<form id="deleteEmpForm"  method="post">
+					<input type="hidden" name="_method" value="delete"/>	<!-- 可以改变提交的方式(比如已 delete 方式提交) -->
+				</form>
 			</div>
 		</div>
 
@@ -97,6 +99,15 @@
 		<script type="text/javascript" src="asserts/js/feather.min.js" th:src="@{/asserts/js/feather.min.js}"></script>
 		<script>
 			feather.replace()
+		</script>
+
+		<!-- 删除员工信息 -->
+		<script>
+            $(".deleteBtn").click(function(){
+                //删除当前员工的
+                $("#deleteEmpForm").attr("action",$(this).attr("del_uri")).submit();
+                return false;
+            });
 		</script>
 
 		<!-- Graphs -->
