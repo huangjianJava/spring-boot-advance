@@ -1,7 +1,6 @@
 package com.huangj.advance;
 
 import com.huangj.advance.dto.PersonConfig;
-import com.huangj.advance.model.WeChart;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
