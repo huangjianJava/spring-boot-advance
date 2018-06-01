@@ -1,6 +1,8 @@
 package com.huangj.advance.controller;
 
+import com.huangj.advance.common.ErrorCode;
 import com.huangj.advance.dao.EmployeeDao;
+import com.huangj.advance.exception.ServiceException;
 import com.huangj.advance.model.Employee;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,6 +56,10 @@ public class EmployeeController {
      */
     @PostMapping(value = "/employee")
     public String addOrUpdateEmployee(Employee employee){
+        if(!"admin".equals(employee.getName())){
+            throw new ServiceException(ErrorCode.BAD_REQUEST);
+        }
+
         employeeDao.saveOrUpdate(employee);
         return "redirect:/employees";
     }

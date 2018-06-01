@@ -35,8 +35,7 @@ public class UnifiedExceptionHandler {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ResultDto.fail(ex.getMessage()));
     }
 
-    @ExceptionHandler({InvalidParameterException.class,
-            IllegalArgumentException.class})
+    @ExceptionHandler({Exception.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<ResultDto> badRequestException(Exception ex){
         return ResponseEntity.badRequest().body(ResultDto.fail(ex.getMessage()));
