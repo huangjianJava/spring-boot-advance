@@ -25,6 +25,7 @@
 		<!-- 修改spring boot默认提供的版本，支持布局功能：thymeleaf3主程序/layout2以上版本 -->
 		<thymeleaf.version>3.0.9.RELEASE</thymeleaf.version>
 		<thymeleaf-layout-dialect.version>2.2.2</thymeleaf-layout-dialect.version>
+		<swagger.version>2.6.1</swagger.version>
 	</properties>
 
 	<dependencies>
@@ -94,6 +95,19 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>22.0</version>
+		</dependency>
+		<!-- end -->
+
+		<!-- swagger ui -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${swagger.version}</version>
 		</dependency>
 		<!-- end -->
 

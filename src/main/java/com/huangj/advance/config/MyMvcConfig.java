@@ -28,7 +28,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter{
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginHandlerInterceptor())
                 .addPathPatterns("/**")
-                .excludePathPatterns("/","/login.html","/login/normal");
+                .excludePathPatterns("/","/login.html","/login/normal","/we-chart/**");
     }
 
     // 注入自定义的区域解析器
