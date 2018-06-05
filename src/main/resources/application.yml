@@ -4,6 +4,7 @@ spring:
     active: dev
 
 ---
+# 开发环境
 server:
   port: 8082
 
@@ -11,7 +12,6 @@ server:
 person:
   account: hj001
   password: 123456
-
 
 spring:
   profiles: dev
@@ -22,8 +22,45 @@ spring:
   mvc:
     date-format: yyyy-MM-dd   # 指定spring mvc的日期格式
 
+  datasource:
+    # 数据源基本配置
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.1.151:3306/advance
+    # url: jdbc:mysql://192.168.1.151:3306/advance  # home
+    type: com.alibaba.druid.pool.DruidDataSource
+    #   数据源其他配置 @ConfigurationProperties 扩展补充
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+
+#mybatis:
+#  config-locations: classpath:mybatis/mybatis-config.xml    # 指定全局配置文件的位置
+#  mapper-locations: classpath:mybatis/mapper/*.xml         # 指定sql映射文件的位置
+
+
+
 ---
-# 开发环境
+# 测试环境
 server:
   port: 8083
 spring:
