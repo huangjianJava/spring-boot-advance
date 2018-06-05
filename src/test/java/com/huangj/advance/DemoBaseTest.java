@@ -2,6 +2,8 @@ package com.huangj.advance;
 
 import com.huangj.advance.dto.PersonConfig;
 import com.huangj.advance.mapper.StoreInfoMapper;
+import com.huangj.advance.mapper.StoreInfoTkMapper;
+import com.huangj.advance.model.StoreInfoModel;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -31,8 +33,14 @@ public class DemoBaseTest extends BaseTest {
     @Autowired
     StoreInfoMapper storeInfoMapper;
 
+    @Autowired
+    StoreInfoTkMapper storeInfoTkMapper;
+
     @Test
     public void testMybatis(){
+        StoreInfoModel storeInfoModel = storeInfoTkMapper.selectAll().get(0);
+        System.out.println("name:" + storeInfoModel.getStoreName());
+
         long size = storeInfoMapper.countStoreInfo();
         System.out.println("account:" + size);
     }
