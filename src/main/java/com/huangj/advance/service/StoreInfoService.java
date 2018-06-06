@@ -1,14 +1,18 @@
 package com.huangj.advance.service;
 
+import com.huangj.advance.model.StoreInfoModel;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 /**
- * Created by huangj on 2017-07-17.
+ * @author huangj
+ * @Description: 仓库信息 service
+ * @date 2018/6/6
  */
-@Service
-public class StoreInfoService {
+public interface StoreInfoService {
 
+    List<StoreInfoModel> queryAllStoreInfo();
 
 }
 

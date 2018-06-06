@@ -26,9 +26,10 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter{
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginHandlerInterceptor())
-                .addPathPatterns("/**")
-                .excludePathPatterns("/","/login.html","/login/normal","/we-chart/**");
+        // todo 后面集成 redis 做完整的权限校验，现在暂时屏蔽拦截器
+//        registry.addInterceptor(new LoginHandlerInterceptor())
+//                .addPathPatterns("/**")
+//                .excludePathPatterns("/","/login.html","/login/normal","/we-chart/**");
     }
 
     // 注入自定义的区域解析器
