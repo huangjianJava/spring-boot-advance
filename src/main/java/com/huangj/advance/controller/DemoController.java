@@ -40,6 +40,7 @@ public class DemoController {
 
 
     @GetMapping(value = "/stores")
+    @ApiOperation(value = "查询全部的仓库信息", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public List<StoreInfoModel> queryAllStoreInfo(){
        return storeInfoService.queryAllStoreInfo();
     }
