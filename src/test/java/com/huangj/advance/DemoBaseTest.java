@@ -14,6 +14,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author huangj
@@ -43,11 +45,18 @@ public class DemoBaseTest extends BaseTest {
 
     @Test
     public void testRedis(){
-//        boolean setSuccess = redisService.set("two","测试一下");
+//        boolean setSuccess = redisService.setObject("two","测试一下");
 //        System.out.println("setSuccess:" + setSuccess);
 
-        String result = redisService.get("two").toString();
-        System.out.println("result:" + result);
+        //List<StoreInfoModel> storeInfos = storeInfoTkMapper.selectAll();
+//        List<String> names = Arrays.asList("小米1","小哈1","1测试hello");
+//        boolean setSuccess = redisService.setObject("tt",names);
+//        //boolean setSuccess = redisService.setList("storeInfos",storeInfos);
+//        System.out.println("setSuccess:" + setSuccess);
+
+        List<Object> test = redisService.getList("storeInfos",0,-1);
+        StoreInfoModel model = (StoreInfoModel)test.get(0);
+
     }
 
     @Test

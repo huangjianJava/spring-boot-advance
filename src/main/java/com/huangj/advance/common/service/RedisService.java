@@ -148,7 +148,7 @@ public class RedisService{
         return redisTemplate.opsForValue().increment(key, -delta);
     }
 
-    // =============================== list =================================
+    // =============================== List =================================
 
     /**
      * 将list放入缓存
@@ -156,7 +156,7 @@ public class RedisService{
      * @param value 值
      * @return
      */
-    public boolean setList(String key, List<Object> value) {
+    public <T> boolean setList(String key, List<T> value) {
         try {
             redisTemplate.opsForList().rightPushAll(key, value);
             return true;
@@ -173,7 +173,7 @@ public class RedisService{
      * @param time 时间(秒)
      * @return
      */
-    public boolean setTimeLimitList(String key, List<Object> value, long time) {
+    public <T> boolean setTimeLimitList(String key, List<T> value, long time) {
         try {
             redisTemplate.opsForList().rightPushAll(key, value);
             if (time > 0){

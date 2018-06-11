@@ -52,7 +52,8 @@ spring:
 
 # redis 相关配置 begin
   redis:
-    host: 192.168.1.151
+    # host: 192.168.1.151
+    host: 192.168.1.107 # home
     port: 6379
     password:
     database: 0

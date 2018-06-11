@@ -17,7 +17,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "t_store_info")
-public class StoreInfoModel {
+public class StoreInfoModel{
 
     /**
      * id
