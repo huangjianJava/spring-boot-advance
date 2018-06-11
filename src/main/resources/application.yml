@@ -22,6 +22,7 @@ spring:
   mvc:
     date-format: yyyy-MM-dd   # 指定spring mvc的日期格式
 
+# 数据源相关配置 begin
   datasource:
     # 数据源基本配置
     username: root
@@ -47,6 +48,28 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+# 数据源相关配置 end
+
+# redis 相关配置 begin
+  redis:
+    host: 192.168.1.151
+    port: 6379
+    password:
+    database: 0
+    timeout: 10000
+    pool:
+      max-active: 10
+      max-wait: 100000
+      min-idle: 0
+
+
+
+
+
+
+
+
+
 
 ---
 # 测试环境

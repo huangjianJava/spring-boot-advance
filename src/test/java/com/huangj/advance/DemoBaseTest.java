@@ -1,5 +1,6 @@
 package com.huangj.advance;
 
+import com.huangj.advance.common.service.RedisService;
 import com.huangj.advance.dto.PersonConfig;
 import com.huangj.advance.mapper.StoreInfoMapper;
 import com.huangj.advance.mapper.StoreInfoTkMapper;
@@ -8,6 +9,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.redis.core.RedisTemplate;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -35,6 +37,18 @@ public class DemoBaseTest extends BaseTest {
 
     @Autowired
     StoreInfoTkMapper storeInfoTkMapper;
+
+    @Autowired
+    private RedisService redisService;
+
+    @Test
+    public void testRedis(){
+//        boolean setSuccess = redisService.set("two","测试一下");
+//        System.out.println("setSuccess:" + setSuccess);
+
+        String result = redisService.get("two").toString();
+        System.out.println("result:" + result);
+    }
 
     @Test
     public void testMybatis(){
