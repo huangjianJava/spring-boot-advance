@@ -158,6 +158,14 @@
 		</dependency>
 		<!-- end -->
 
+		<!-- fastjson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.31</version>
+		</dependency>
+		<!-- end -->
+
 	</dependencies>
 
 	<build>
