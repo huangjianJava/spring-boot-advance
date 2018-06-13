@@ -62,6 +62,17 @@ spring:
       max-active: 10
       max-wait: 100000
       min-idle: 0
+# redis 相关配置 end
+
+# rabbitmq 相关配置 begin
+  rabbitmq:
+    host: 192.168.1.151
+    # host: 192.168.1.107 # home
+    username: guest
+    password: guest
+    virtual-host: /
+# rabbitmq 相关配置 end
+
 
 
 
