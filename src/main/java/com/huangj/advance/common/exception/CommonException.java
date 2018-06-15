@@ -1,4 +1,4 @@
-package com.huangj.advance.exception;
+package com.huangj.advance.common.exception;
 
 
 import com.huangj.advance.common.ErrorCode;

@@ -3,8 +3,10 @@ package com.huangj.advance;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
-@EnableRabbit  // 开启基于注解的RabbitMQ模式
+@EnableScheduling
+@EnableRabbit  				// 开启基于注解的RabbitMQ模式
 @SpringBootApplication
 public class AdvanceApplication {
 
