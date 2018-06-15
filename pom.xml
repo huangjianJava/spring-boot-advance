@@ -78,6 +78,13 @@
 		</dependency>
 		<!-- end -->
 
+		<!-- SpringBoot 默认使用 SpringData ElasticSearch 模块进行操作 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+		</dependency>
+		<!-- end -->
+
 		<!-- lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>

@@ -28,8 +28,8 @@ spring:
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
-    # url: jdbc:mysql://192.168.1.151:3306/advance
-    url: jdbc:mysql://192.168.1.107:3307/advance  # home
+    url: jdbc:mysql://192.168.1.151:3306/advance
+    # url: jdbc:mysql://192.168.1.107:3307/advance  # home
     type: com.alibaba.druid.pool.DruidDataSource
     #   数据源其他配置 @ConfigurationProperties 扩展补充
     initialSize: 5
@@ -66,13 +66,19 @@ spring:
 
 # rabbitmq 相关配置 begin
   rabbitmq:
-    # host: 192.168.1.151
-    host: 192.168.1.107 # home
+    host: 192.168.1.151
+    # host: 192.168.1.107 # home
     username: guest
     password: guest
     virtual-host: /
 # rabbitmq 相关配置 end
 
+# es 相关配置 begin
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: 192.168.1.151:9300
+# es 相关配置 end
 
 
 

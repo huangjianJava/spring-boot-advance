@@ -15,11 +15,40 @@ import java.util.Map;
 @Service
 public class RabbitMqService {
 
-    @RabbitListener(queues = "amqpadirect.queue")
-    public void receiveStores(Map<String,Object> map){
-        System.out.println("========== 监听接收 ==========");
+    /**
+     * direct exchange
+     * @param message
+     */
+    @RabbitListener(queues = "amqpdirect.queue")
+    public void receiveDirect(Message message){
+        System.out.println("========== direct-监听接收 ==========");
+        String msg = new String(message.getBody());
+        System.out.println(msg);
+        System.out.println(message);
+    }
 
-        System.out.println(map);
+    /**
+     * fanout exchange
+     * @param message
+     */
+    @RabbitListener(queues = "amqpfanout.queue1")
+    public void receiveFanoutOne(Message message){
+        System.out.println("========== fanout1-监听接收 ==========");
+        String msg = new String(message.getBody());
+        System.out.println(msg);
+        System.out.println(message);
+    }
+
+    /**
+     * fanout exchange
+     * @param message
+     */
+    @RabbitListener(queues = "amqpfanout.queue2")
+    public void receiveFanoutTwo(Message message){
+        System.out.println("========== fanout2-监听接收 ==========");
+        String msg = new String(message.getBody());
+        System.out.println(msg);
+        System.out.println(message);
     }
 
 }
