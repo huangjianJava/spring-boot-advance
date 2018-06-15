@@ -15,7 +15,7 @@ import java.util.Map;
 
 /**
  * @author huangj
- * @Description:
+ * @Description:    RabbitMq 测试类
  * @date 2018/6/13
  */
 public class RabbitMqTest extends BaseTest {

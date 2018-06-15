@@ -1,12 +1,11 @@
-package com.huangj.advance.exception;
+package com.huangj.advance.common.exception;
 
 import com.huangj.advance.common.ErrorCode;
-import com.huangj.advance.common.exception.CommonException;
 
 /**
  * @author huangj
  * @Description:    service 层统一异常处理
- * @date 2018/6/1
+ * @date 2018/6/15
  */
 public class ServiceException extends CommonException {
 

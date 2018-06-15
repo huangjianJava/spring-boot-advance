@@ -1,5 +1,5 @@
 [2018-06-01 14:58:00.834] [ERROR] [http-nio-8082-exec-1] com.huangj.advance.common.exception.UnifiedExceptionHandler Line:28  - handleCommonException
-com.huangj.advance.exception.ServiceException: 参数错误
+com.huangj.advance.common.exception.ServiceException: 参数错误
 	at com.huangj.advance.controller.WeChartController.exceptionTest(WeChartController.java:25)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -56,7 +56,7 @@ com.huangj.advance.exception.ServiceException: 参数错误
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:745)
 [2018-06-01 14:58:21.323] [ERROR] [http-nio-8082-exec-7] com.huangj.advance.common.exception.UnifiedExceptionHandler Line:28  - handleCommonException
-com.huangj.advance.exception.ServiceException: 参数错误
+com.huangj.advance.common.exception.ServiceException: 参数错误
 	at com.huangj.advance.controller.WeChartController.exceptionTest(WeChartController.java:25)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -113,7 +113,7 @@ com.huangj.advance.exception.ServiceException: 参数错误
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:745)
 [2018-06-01 14:59:03.178] [ERROR] [http-nio-8082-exec-10] com.huangj.advance.common.exception.UnifiedExceptionHandler Line:28  - handleCommonException
-com.huangj.advance.exception.ServiceException: 参数错误
+com.huangj.advance.common.exception.ServiceException: 参数错误
 	at com.huangj.advance.controller.WeChartController.exceptionTest(WeChartController.java:25)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -170,7 +170,7 @@ com.huangj.advance.exception.ServiceException: 参数错误
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:745)
 [2018-06-01 15:00:29.352] [ERROR] [http-nio-8082-exec-2] com.huangj.advance.common.exception.UnifiedExceptionHandler Line:28  - handleCommonException
-com.huangj.advance.exception.ServiceException: 参数错误
+com.huangj.advance.common.exception.ServiceException: 参数错误
 	at com.huangj.advance.controller.WeChartController.exceptionTest(WeChartController.java:25)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -227,7 +227,7 @@ com.huangj.advance.exception.ServiceException: 参数错误
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:745)
 [2018-06-01 15:00:34.357] [ERROR] [http-nio-8082-exec-1] com.huangj.advance.common.exception.UnifiedExceptionHandler Line:28  - handleCommonException
-com.huangj.advance.exception.ServiceException: 参数错误
+com.huangj.advance.common.exception.ServiceException: 参数错误
 	at com.huangj.advance.controller.WeChartController.exceptionTest(WeChartController.java:25)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -284,7 +284,7 @@ com.huangj.advance.exception.ServiceException: 参数错误
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.lang.Thread.run(Thread.java:745)
 [2018-06-01 15:20:29.511] [ERROR] [http-nio-8082-exec-10] com.huangj.advance.common.exception.UnifiedExceptionHandler Line:28  - handleCommonException
-com.huangj.advance.exception.ServiceException: 参数错误
+com.huangj.advance.common.exception.ServiceException: 参数错误
 	at com.huangj.advance.controller.EmployeeController.addOrUpdateEmployee(EmployeeController.java:60)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)

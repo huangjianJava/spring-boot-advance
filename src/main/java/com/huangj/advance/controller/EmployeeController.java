@@ -2,16 +2,14 @@ package com.huangj.advance.controller;
 
 import com.huangj.advance.common.ErrorCode;
 import com.huangj.advance.dao.EmployeeDao;
-import com.huangj.advance.exception.ServiceException;
+import com.huangj.advance.common.exception.ServiceException;
 import com.huangj.advance.model.Employee;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**

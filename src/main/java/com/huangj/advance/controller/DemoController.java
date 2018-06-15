@@ -2,7 +2,7 @@ package com.huangj.advance.controller;
 
 import com.huangj.advance.common.ErrorCode;
 import com.huangj.advance.common.ResultDto;
-import com.huangj.advance.exception.ServiceException;
+import com.huangj.advance.common.exception.ServiceException;
 import com.huangj.advance.model.StoreInfoModel;
 import com.huangj.advance.service.StoreInfoService;
 import io.swagger.annotations.ApiOperation;

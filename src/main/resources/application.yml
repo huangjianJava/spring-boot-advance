@@ -80,6 +80,18 @@ spring:
       cluster-nodes: 192.168.1.151:9300
 # es 相关配置 end
 
+# mail 相关配置 end
+  mail:
+    username: 597112336@qq.com
+    password: pzyrqaycpdpubcag
+    default-encoding: UTF-8
+    host: smtp.qq.com
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+# mail 相关配置 -> ssl: 涉及权限的; host; SMTP 服务器地址 end
 
 
 
