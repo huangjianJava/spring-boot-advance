@@ -5,11 +5,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
-
-import java.nio.file.AccessDeniedException;
 
 /**
  * @author huangj
@@ -25,19 +24,19 @@ public class UnifiedExceptionHandler {
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<ResultDto> handleCommonException(Exception ex){
         logger.error("handleCommonException",ex);
-        return ResponseEntity.status(HttpStatus.OK).body(ResultDto.fail(ex.getMessage()));
+        return ResponseEntity.status(HttpStatus.OK).body(ResultDto.fail(ex.getMessage(),ex));
     }
 
     @ExceptionHandler({AccessDeniedException.class})
     @ResponseStatus(HttpStatus.FORBIDDEN)
     public ResponseEntity<ResultDto> forbiddenRequestException(Exception ex){
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ResultDto.fail(ex.getMessage()));
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ResultDto.fail(ex.getMessage(),ex));
     }
 
     @ExceptionHandler({Exception.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<ResultDto> badRequestException(Exception ex){
-        return ResponseEntity.badRequest().body(ResultDto.fail(ex.getMessage()));
+        return ResponseEntity.badRequest().body(ResultDto.fail(ex.getMessage(),ex));
     }
 
 }
