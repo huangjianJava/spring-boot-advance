@@ -3,6 +3,8 @@ package com.huangj.advance;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.huangj.advance.common.RsaCryptUtil;
+import com.huangj.advance.dto.StoreInfoDto;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.apache.commons.lang3.tuple.Triple;
 import org.junit.Test;
@@ -11,9 +13,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpMethod;
 
 import java.io.UnsupportedEncodingException;
-import java.util.Date;
-import java.util.Map;
-import java.util.TreeMap;
+import java.lang.reflect.Field;
+import java.util.*;
 import java.util.stream.Stream;
 
 /**
@@ -44,6 +45,73 @@ public class SimpleTest {
             "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCOdxKM4vLrMnzLXOyjcTCOA62gvNAKio3MA22V\n" +
             "FOhDXAuf8V1V81vVeHSrOv4UYB3aXuk4SbCdg/8XmJ8jK6nss4X/7KBdnFZrD/LswQedJeWcYlDe\n" +
             "gBcFV3Xp87AHBRjMHTFv0f4mpiqwZHmKb9iP2jIlLUBszMeylGO9WmOm5wIDAQAB";
+
+    @Test
+    public void testSome() {
+        StoreInfoDto storeInfoDto = StoreInfoDto.builder().id(1L).storeNo("001").storeName("北京仓").build();
+        StoreInfoDto storeInfoDto2 = StoreInfoDto.builder().id(2L).storeNo("002").storeName("深圳仓").build();
+        List<StoreInfoDto> list = new ArrayList<>();
+        list.add(storeInfoDto);
+        list.add(storeInfoDto2);
+
+        List<String> names = getStringAbel(list,StoreInfoDto.class,"storeNo");
+
+        System.out.println("names 打印如下 ============");
+        names.stream().forEach(e -> System.out.println(e));
+    }
+
+    /**
+     *
+     * @param o 数据集合
+     * @param c 泛型指定的类
+     * @param field 具体的某一个属性字段
+     * @return
+     */
+    public static List<String> getStringAbel(List<?> o, Class<?> c, String field) {
+        List<String> result = new ArrayList<>();
+        if (StringUtils.isNoneBlank(field)) {
+            Field[] fields = c.getDeclaredFields();
+            int pos;
+            for (pos = 0; pos < fields.length; pos++) {
+                if (field.equals(fields[pos].getName())) {
+                    break;
+                }
+            }
+            for (Object o1 : o) {
+                try {
+                    fields[pos].setAccessible(true);
+                    String value = (String)fields[pos].get(o1);
+                    result.add(value);
+                } catch (Exception e) {
+                    System.out.println("error--------" + "Reason is:" + e.getMessage());
+                }
+            }
+        }
+        return result;
+    }
+
+   /* public static String getStringAbel(List<?> o, Class<?> c, String field) {
+        StringBuffer result = new StringBuffer();
+        if (StringUtils.isNoneBlank(field)) {
+            Field[] fields = c.getDeclaredFields();
+            int pos;
+            for (pos = 0; pos < fields.length; pos++) {
+                if (field.equals(fields[pos].getName())) {
+                    break;
+                }
+            }
+            for (Object o1 : o) {
+                try {
+                    fields[pos].setAccessible(true);
+                    System.out.println("测试一下:" + fields[pos].get(o1));
+                    result.append(fields[pos].get(o1) + ",");
+                } catch (Exception e) {
+                    System.out.println("error--------" + "Reason is:" + e.getMessage());
+                }
+            }
+        }
+        return result.deleteCharAt(result.length() - 1).toString();
+    }*/
 
     @Test
     public void testSign() throws Exception{
