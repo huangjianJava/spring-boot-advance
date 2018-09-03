@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.Charsets;
 import com.google.common.collect.Maps;
+import com.google.common.io.Resources;
 import com.huangj.advance.common.RsaCryptUtil;
 import org.apache.commons.lang3.time.DateUtils;
 import org.apache.commons.lang3.tuple.Triple;
@@ -12,7 +13,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpMethod;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.net.URL;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.Date;
@@ -49,6 +52,17 @@ public class SimpleTest {
             "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCOdxKM4vLrMnzLXOyjcTCOA62gvNAKio3MA22V\n" +
             "FOhDXAuf8V1V81vVeHSrOv4UYB3aXuk4SbCdg/8XmJ8jK6nss4X/7KBdnFZrD/LswQedJeWcYlDe\n" +
             "gBcFV3Xp87AHBRjMHTFv0f4mpiqwZHmKb9iP2jIlLUBszMeylGO9WmOm5wIDAQAB";
+
+    @Test
+    public void testPath() throws Exception {
+        File file = new File(Resources.getResource("application.properties").getFile());
+        System.out.println("file:" + file.getAbsolutePath());
+
+        ClassLoader classLoader = SimpleTest.class.getClassLoader();
+        URL resource = classLoader.getResource("application.properties");
+        String path = resource.getPath();
+        System.out.println(path);
+    }
 
     @Test
     public void testSome() throws Exception {
