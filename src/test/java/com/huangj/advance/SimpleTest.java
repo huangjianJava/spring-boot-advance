@@ -230,8 +230,20 @@ public class SimpleTest {
     }
 
     @Test
-    public void testLog() {
+    public void testLog() throws Exception {
         logger.error("error log 测试");
+
+        Date date1 = DateUtils.parseDate("2018-09-07 23:59:59","yyyy-MM-dd HH:mm:ss");
+        long time1 = date1.getTime();
+        System.out.println("time1:" + time1);
+
+        Date date2 = DateUtils.parseDate("2018-09-07","yyyy-MM-dd");
+        long time2 = date2.getTime();
+        System.out.println("time2:" + time2);
+
+
+
+
     }
 
 }
