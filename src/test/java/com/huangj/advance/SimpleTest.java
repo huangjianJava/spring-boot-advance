@@ -2,10 +2,9 @@ package com.huangj.advance;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.google.common.base.Charsets;
-import com.google.common.collect.Maps;
-import com.google.common.io.Resources;
 import com.huangj.advance.common.RsaCryptUtil;
+import com.huangj.advance.dto.StoreInfoDto;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.apache.commons.lang3.tuple.Triple;
 import org.junit.Test;
@@ -13,20 +12,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpMethod;
 
-import java.io.File;
 import java.io.UnsupportedEncodingException;
-import java.net.URL;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.lang.reflect.Field;
+import java.util.*;
 import java.util.stream.Stream;
 
 /**
  * @author huangj
- * @Description: 一些简单的测试
+ * @Description:  一些简单的测试
  * @date 2018/5/29
  */
 public class SimpleTest {
@@ -54,29 +47,74 @@ public class SimpleTest {
             "gBcFV3Xp87AHBRjMHTFv0f4mpiqwZHmKb9iP2jIlLUBszMeylGO9WmOm5wIDAQAB";
 
     @Test
-    public void testPath() throws Exception {
-        File file = new File(Resources.getResource("application.properties").getFile());
-        System.out.println("file:" + file.getAbsolutePath());
+    public void testSome() {
+        StoreInfoDto storeInfoDto = StoreInfoDto.builder().id(1L).storeNo("001").storeName("北京仓").build();
+        StoreInfoDto storeInfoDto2 = StoreInfoDto.builder().id(2L).storeNo("002").storeName("深圳仓").build();
+        List<StoreInfoDto> list = new ArrayList<>();
+        list.add(storeInfoDto);
+        list.add(storeInfoDto2);
 
-        ClassLoader classLoader = SimpleTest.class.getClassLoader();
-        URL resource = classLoader.getResource("application.properties");
-        String path = resource.getPath();
-        System.out.println(path);
+        List<String> names = getStringAbel(list,StoreInfoDto.class,"storeNo");
+
+        System.out.println("names 打印如下 ============");
+        names.stream().forEach(e -> System.out.println(e));
     }
 
-    @Test
-    public void testSome() throws Exception {
-        System.out.println("============== URL 编码测试 ==============");
-        String hello = "{\"ali_gh\":\"123\",\"att_path\":\"123\",\"m_work_code\":\"123\",\"name\":\"开放需求\",\"presenter\":\"小明\",\"workload\":200}";
-        String encode = URLEncoder.encode(hello, Charsets.UTF_8.name());
-        System.out.println("encode:" + encode);
-
-        String decode = URLDecoder.decode(encode, Charsets.UTF_8.name());
-        System.out.println("decode:" + decode);
+    /**
+     *
+     * @param o 数据集合
+     * @param c 泛型指定的类
+     * @param field 具体的某一个属性字段
+     * @return
+     */
+    public static List<String> getStringAbel(List<?> o, Class<?> c, String field) {
+        List<String> result = new ArrayList<>();
+        if (StringUtils.isNoneBlank(field)) {
+            Field[] fields = c.getDeclaredFields();
+            int pos;
+            for (pos = 0; pos < fields.length; pos++) {
+                if (field.equals(fields[pos].getName())) {
+                    break;
+                }
+            }
+            for (Object o1 : o) {
+                try {
+                    fields[pos].setAccessible(true);
+                    String value = (String)fields[pos].get(o1);
+                    result.add(value);
+                } catch (Exception e) {
+                    System.out.println("error--------" + "Reason is:" + e.getMessage());
+                }
+            }
+        }
+        return result;
     }
 
+   /* public static String getStringAbel(List<?> o, Class<?> c, String field) {
+        StringBuffer result = new StringBuffer();
+        if (StringUtils.isNoneBlank(field)) {
+            Field[] fields = c.getDeclaredFields();
+            int pos;
+            for (pos = 0; pos < fields.length; pos++) {
+                if (field.equals(fields[pos].getName())) {
+                    break;
+                }
+            }
+            for (Object o1 : o) {
+                try {
+                    fields[pos].setAccessible(true);
+                    System.out.println("测试一下:" + fields[pos].get(o1));
+                    result.append(fields[pos].get(o1) + ",");
+                } catch (Exception e) {
+                    System.out.println("error--------" + "Reason is:" + e.getMessage());
+                }
+            }
+        }
+        return result.deleteCharAt(result.length() - 1).toString();
+    }*/
+
     @Test
-    public void testSign() throws Exception {
+    public void testSign() throws Exception{
         // 将参数进行字典排序
         StringBuilder sb = new StringBuilder();
         Map<String, String> map = new TreeMap<>();
@@ -93,19 +131,19 @@ public class SimpleTest {
         System.out.println("待签名内容：" + signContent);
 
         // 1.用私钥生成签名
-        String sign = RsaCryptUtil.sign(signContent.getBytes(), PRIVATEKEY);
+        String sign = RsaCryptUtil.sign(signContent.getBytes(),PRIVATEKEY);
         System.out.println("私钥：" + PRIVATEKEY);
         System.out.println("签名：" + sign);
         System.out.println("签名长度：" + sign.length());
 
         // 2.用公钥进行验签
-        boolean verifySuccess = RsaCryptUtil.verify(signContent.getBytes(), PUBLICKEY, sign);
+        boolean verifySuccess = RsaCryptUtil.verify(signContent.getBytes(),PUBLICKEY,sign);
         System.out.println("公钥：" + PUBLICKEY);
         System.out.println("验签结果：" + verifySuccess);
     }
 
     @Test
-    public void testRsa() throws Exception {
+    public void testRsa() throws Exception{
         System.out.println("生成新的秘钥对---------------------------------------------------------");
         Map<String, Object> genKeyPair = RsaCryptUtil.genKeyPair();
         Object object = RsaCryptUtil.getPublicKey(genKeyPair);
@@ -118,25 +156,25 @@ public class SimpleTest {
         System.out.println("--------------公钥加密,私钥解密--------------");
         String phone = "13632598743";
         System.out.println("原始手机号：\r\n" + phone);
-        String encodedData = RsaCryptUtil.encryptByPublicKey(phone, PUBLICKEY);
+        String encodedData = RsaCryptUtil.encryptByPublicKey(phone,PUBLICKEY);
         System.out.println("公钥加密后手机号：\r\n" + encodedData);
         System.out.println("---------------------------------------------------------");
-        String decryptData = RsaCryptUtil.decryptByPrivateKey(encodedData, PRIVATEKEY);
+        String decryptData = RsaCryptUtil.decryptByPrivateKey(encodedData,PRIVATEKEY);
         System.out.println("私钥解密后手机号：\r\n" + decryptData);
 
         System.out.println("--------------私钥加密,公钥解密--------------");
         String phoneTwo = "15773002366";
         System.out.println("原始手机号：\r\n" + phoneTwo);
-        String encodedDataTwo = RsaCryptUtil.encryptByPrivateKey(phoneTwo, PRIVATEKEY);
+        String encodedDataTwo = RsaCryptUtil.encryptByPrivateKey(phoneTwo,PRIVATEKEY);
         System.out.println("私钥加密后手机号：\r\n" + encodedDataTwo);
         System.out.println("---------------------------------------------------------");
-        String decryptDataTwo = RsaCryptUtil.decryptByPublicKey(encodedDataTwo, PUBLICKEY);
+        String decryptDataTwo = RsaCryptUtil.decryptByPublicKey(encodedDataTwo,PUBLICKEY);
         System.out.println("公钥解密后手机号：\r\n" + decryptDataTwo);
 
     }
 
     @Test
-    public void testJson() {
+    public void testJson(){
         String json = "{\n" +
                 "  \"memberLogReqDto\": {\n" +
                 "    \"appVersion\": \"string\",\n" +
@@ -154,7 +192,7 @@ public class SimpleTest {
                 "  \"phone\": \"string\"\n" +
                 "}";
 
-        Map map = JSON.parseObject(json, Map.class);
+        Map map = JSON.parseObject(json,Map.class);
 
         Map<String, String> sortedMap = new TreeMap<String, String>(map);
 
@@ -163,18 +201,18 @@ public class SimpleTest {
     }
 
     @Test
-    public void testOne() {
+    public void testOne(){
         Date today = new Date();
         long time1 = System.currentTimeMillis();
 
-        long time2 = DateUtils.addMinutes(today, 2).getTime();
+        long time2 = DateUtils.addMinutes(today,2).getTime();
 
         Long diff = (time2 - time1) / (1000 * 60);
         System.out.println("diff:" + diff);
 
         if (diff < 0 || diff > 1) {
             System.out.println("有误");
-        } else {
+        }else{
             System.out.println("无误");
         }
 
@@ -204,7 +242,7 @@ public class SimpleTest {
     }
 
     @Test
-    public void test() {
+    public void test(){
         boolean numberFlag = true;
         String retStr = "";
         String strTable = numberFlag ? "1234567890" : "1234567890abcdefghijkmnpqrstuvwxyz";
@@ -230,20 +268,8 @@ public class SimpleTest {
     }
 
     @Test
-    public void testLog() throws Exception {
+    public void testLog() {
         logger.error("error log 测试");
-
-        Date date1 = DateUtils.parseDate("2018-09-07 23:59:59","yyyy-MM-dd HH:mm:ss");
-        long time1 = date1.getTime();
-        System.out.println("time1:" + time1);
-
-        Date date2 = DateUtils.parseDate("2018-09-07","yyyy-MM-dd");
-        long time2 = date2.getTime();
-        System.out.println("time2:" + time2);
-
-
-
-
     }
 
 }
