@@ -1,7 +1,8 @@
-package com.huangj.advance.designmode;
+package com.huangj.advance.designmode.model1;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -11,12 +12,7 @@ import lombok.Setter;
  * @description:
  * @date 2018/11/14
  */
-@Getter
-@Setter
-@AllArgsConstructor
 public abstract class Duck {
-
-    private String name;
 
     /**
      * 每个鸭子都有自我介绍

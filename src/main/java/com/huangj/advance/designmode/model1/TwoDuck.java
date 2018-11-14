@@ -1,4 +1,4 @@
-package com.huangj.advance.designmode;
+package com.huangj.advance.designmode.model1;
 
 import lombok.*;
 
@@ -12,10 +12,10 @@ import lombok.*;
 @Getter
 @Setter
 @AllArgsConstructor
-public class OneDuck extends Duck{
+public class TwoDuck extends Duck {
 
     @Override
     public void display() {
-        System.out.println("TwoDuck.我叫" + super.getName());
+        System.out.println("我叫 TwoDuck.");
     }
 }
