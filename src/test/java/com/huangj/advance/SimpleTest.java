@@ -3,6 +3,7 @@ package com.huangj.advance;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.huangj.advance.common.RsaCryptUtil;
+import com.huangj.advance.dto.IndexResDto;
 import com.huangj.advance.dto.StoreInfoDto;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
@@ -19,7 +20,7 @@ import java.util.stream.Stream;
 
 /**
  * @author huangj
- * @Description:  一些简单的测试
+ * @Description: 一些简单的测试
  * @date 2018/5/29
  */
 public class SimpleTest {
@@ -47,6 +48,12 @@ public class SimpleTest {
             "gBcFV3Xp87AHBRjMHTFv0f4mpiqwZHmKb9iP2jIlLUBszMeylGO9WmOm5wIDAQAB";
 
     @Test
+    public void test111() {
+        int test = (int) (Math.random() * 10);
+        System.out.println("test:" + test);
+    }
+
+    @Test
     public void testSome() {
         StoreInfoDto storeInfoDto = StoreInfoDto.builder().id(1L).storeNo("001").storeName("北京仓").build();
         StoreInfoDto storeInfoDto2 = StoreInfoDto.builder().id(2L).storeNo("002").storeName("深圳仓").build();
@@ -54,16 +61,15 @@ public class SimpleTest {
         list.add(storeInfoDto);
         list.add(storeInfoDto2);
 
-        List<String> names = getStringAbel(list,StoreInfoDto.class,"storeNo");
+        List<String> names = getStringAbel(list, StoreInfoDto.class, "storeNo");
 
         System.out.println("names 打印如下 ============");
         names.stream().forEach(e -> System.out.println(e));
     }
 
     /**
-     *
-     * @param o 数据集合
-     * @param c 泛型指定的类
+     * @param o     数据集合
+     * @param c     泛型指定的类
      * @param field 具体的某一个属性字段
      * @return
      */
@@ -80,7 +86,7 @@ public class SimpleTest {
             for (Object o1 : o) {
                 try {
                     fields[pos].setAccessible(true);
-                    String value = (String)fields[pos].get(o1);
+                    String value = (String) fields[pos].get(o1);
                     result.add(value);
                 } catch (Exception e) {
                     System.out.println("error--------" + "Reason is:" + e.getMessage());
@@ -114,7 +120,7 @@ public class SimpleTest {
     }*/
 
     @Test
-    public void testSign() throws Exception{
+    public void testSign() throws Exception {
         // 将参数进行字典排序
         StringBuilder sb = new StringBuilder();
         Map<String, String> map = new TreeMap<>();
@@ -131,19 +137,19 @@ public class SimpleTest {
         System.out.println("待签名内容：" + signContent);
 
         // 1.用私钥生成签名
-        String sign = RsaCryptUtil.sign(signContent.getBytes(),PRIVATEKEY);
+        String sign = RsaCryptUtil.sign(signContent.getBytes(), PRIVATEKEY);
         System.out.println("私钥：" + PRIVATEKEY);
         System.out.println("签名：" + sign);
         System.out.println("签名长度：" + sign.length());
 
         // 2.用公钥进行验签
-        boolean verifySuccess = RsaCryptUtil.verify(signContent.getBytes(),PUBLICKEY,sign);
+        boolean verifySuccess = RsaCryptUtil.verify(signContent.getBytes(), PUBLICKEY, sign);
         System.out.println("公钥：" + PUBLICKEY);
         System.out.println("验签结果：" + verifySuccess);
     }
 
     @Test
-    public void testRsa() throws Exception{
+    public void testRsa() throws Exception {
         System.out.println("生成新的秘钥对---------------------------------------------------------");
         Map<String, Object> genKeyPair = RsaCryptUtil.genKeyPair();
         Object object = RsaCryptUtil.getPublicKey(genKeyPair);
@@ -156,25 +162,25 @@ public class SimpleTest {
         System.out.println("--------------公钥加密,私钥解密--------------");
         String phone = "13632598743";
         System.out.println("原始手机号：\r\n" + phone);
-        String encodedData = RsaCryptUtil.encryptByPublicKey(phone,PUBLICKEY);
+        String encodedData = RsaCryptUtil.encryptByPublicKey(phone, PUBLICKEY);
         System.out.println("公钥加密后手机号：\r\n" + encodedData);
         System.out.println("---------------------------------------------------------");
-        String decryptData = RsaCryptUtil.decryptByPrivateKey(encodedData,PRIVATEKEY);
+        String decryptData = RsaCryptUtil.decryptByPrivateKey(encodedData, PRIVATEKEY);
         System.out.println("私钥解密后手机号：\r\n" + decryptData);
 
         System.out.println("--------------私钥加密,公钥解密--------------");
         String phoneTwo = "15773002366";
         System.out.println("原始手机号：\r\n" + phoneTwo);
-        String encodedDataTwo = RsaCryptUtil.encryptByPrivateKey(phoneTwo,PRIVATEKEY);
+        String encodedDataTwo = RsaCryptUtil.encryptByPrivateKey(phoneTwo, PRIVATEKEY);
         System.out.println("私钥加密后手机号：\r\n" + encodedDataTwo);
         System.out.println("---------------------------------------------------------");
-        String decryptDataTwo = RsaCryptUtil.decryptByPublicKey(encodedDataTwo,PUBLICKEY);
+        String decryptDataTwo = RsaCryptUtil.decryptByPublicKey(encodedDataTwo, PUBLICKEY);
         System.out.println("公钥解密后手机号：\r\n" + decryptDataTwo);
 
     }
 
     @Test
-    public void testJson(){
+    public void testJson() {
         String json = "{\n" +
                 "  \"memberLogReqDto\": {\n" +
                 "    \"appVersion\": \"string\",\n" +
@@ -192,7 +198,7 @@ public class SimpleTest {
                 "  \"phone\": \"string\"\n" +
                 "}";
 
-        Map map = JSON.parseObject(json,Map.class);
+        Map map = JSON.parseObject(json, Map.class);
 
         Map<String, String> sortedMap = new TreeMap<String, String>(map);
 
@@ -201,18 +207,18 @@ public class SimpleTest {
     }
 
     @Test
-    public void testOne(){
+    public void testOne() {
         Date today = new Date();
         long time1 = System.currentTimeMillis();
 
-        long time2 = DateUtils.addMinutes(today,2).getTime();
+        long time2 = DateUtils.addMinutes(today, 2).getTime();
 
         Long diff = (time2 - time1) / (1000 * 60);
         System.out.println("diff:" + diff);
 
         if (diff < 0 || diff > 1) {
             System.out.println("有误");
-        }else{
+        } else {
             System.out.println("无误");
         }
 
@@ -242,7 +248,7 @@ public class SimpleTest {
     }
 
     @Test
-    public void test(){
+    public void test() {
         boolean numberFlag = true;
         String retStr = "";
         String strTable = numberFlag ? "1234567890" : "1234567890abcdefghijkmnpqrstuvwxyz";
