@@ -2,6 +2,7 @@ package com.huangj.advance.javabase;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
+import org.springframework.util.CollectionUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,6 +16,17 @@ public class JavaBaseTest {
 
     @Test
     public void test6() {
+       /* Integer test = 1 & 0;
+        Integer test21 = 1 | 0;*/
+        int test = 0;
+        List<Integer> list = Arrays.asList(0, 0, 1);
+        for (int i = 0; i < list.size(); i++) {
+            test = test | list.get(i);
+        }
+        System.out.println("test:" + test);
+
+
+
 
     }
 
