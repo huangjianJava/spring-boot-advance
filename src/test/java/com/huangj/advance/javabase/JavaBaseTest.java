@@ -1,5 +1,6 @@
 package com.huangj.advance.javabase;
 
+import com.huangj.advance.enums.AssignStatusEnum;
 import org.junit.Test;
 
 import java.util.Arrays;
