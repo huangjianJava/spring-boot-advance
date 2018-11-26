@@ -1,16 +1,15 @@
 package com.huangj.advance.javabase;
 
+import com.huangj.advance.enums.AssignStatusEnum;
 import org.junit.Test;
 
 import java.util.Arrays;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.util.CollectionUtils;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Author: huangj
@@ -28,6 +27,18 @@ public class JavaBaseTest {
         one.name = "小米";
         one.address = "地址";
         System.out.println(one.name + "," + one.address);
+    }
+
+    @Test
+    public void test6() {
+       /* Integer test = 1 & 0;
+        Integer test21 = 1 | 0;*/
+        int test = 0;
+        List<Integer> list = Arrays.asList(0, 0, 1);
+        for (int i = 0; i < list.size(); i++) {
+            test = test | list.get(i);
+        }
+        System.out.println("test:" + test);
     }
 
     @Test
@@ -56,7 +67,7 @@ public class JavaBaseTest {
     }
 
     @Test
-    public void test6() {
+    public void test61() {
         int[][] arr4 = new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         System.out.println("原二维数组：");
         for (int i = 0; i < arr4.length; i++) {
