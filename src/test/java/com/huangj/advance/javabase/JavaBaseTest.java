@@ -20,6 +20,17 @@ import java.util.stream.Collectors;
 public class JavaBaseTest {
 
     @Test
+    public void test7() {
+        TestTwo testTwo = new TestTwo();
+
+
+        TestOne one = new TestOne();
+        one.name = "小米";
+        one.address = "地址";
+        System.out.println(one.name + "," + one.address);
+    }
+
+    @Test
     public void test11() {
         int[] test = new int[3];
         Arrays.fill(test, 5);

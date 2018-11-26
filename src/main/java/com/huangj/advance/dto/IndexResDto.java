@@ -1,5 +1,6 @@
 package com.huangj.advance.dto;
 
+import com.huangj.advance.javabase.TestOne;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -98,5 +99,10 @@ public class IndexResDto {
      */
     @ApiModelProperty(value = "出库数量")
     private long storeExportNum;
+
+    /*public void say(){
+        TestOne one = new TestOne();
+        one.a
+    }*/
 
 }
