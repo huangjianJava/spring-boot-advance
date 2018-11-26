@@ -1,10 +1,11 @@
 package com.huangj.advance.javabase;
 
-import com.huangj.advance.enums.AssignStatusEnum;
+import com.huangj.advance.javabase.tenchapter.Parent;
+import com.huangj.advance.javabase.tenchapter.Son1;
+import com.huangj.advance.javabase.tenchapter.Son2;
+import org.apache.commons.lang3.RandomUtils;
 import org.junit.Test;
-
 import java.util.Arrays;
-
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
@@ -19,10 +20,26 @@ import java.util.List;
 public class JavaBaseTest {
 
     @Test
+    public void test10() {
+        Parent p = new Parent();
+        boolean one = p instanceof Son1;
+        System.out.println("one:" + one);
+
+        Son1 son1 = new Son1();
+        boolean two = son1 instanceof Parent;
+        System.out.println("two:" + two);
+
+    }
+
+    @Test
+    public void test9() {
+        int randomInt = RandomUtils.nextInt(2,32);
+        System.out.println("randomInt:" + randomInt);
+    }
+
+    @Test
     public void test7() {
         TestTwo testTwo = new TestTwo();
-
-
         TestOne one = new TestOne();
         one.name = "小米";
         one.address = "地址";
