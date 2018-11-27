@@ -1,14 +1,18 @@
 package com.huangj.advance.javabase;
 
 import com.huangj.advance.enums.AssignStatusEnum;
+import com.huangj.advance.javabase.seven.StaticPerson;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.junit.Test;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * Author: huangj
@@ -16,6 +20,26 @@ import java.util.List;
  * Date: 2018/11/18
  */
 public class JavaBaseTest {
+
+    @Test
+    public void test8() {
+        Boolean test = Boolean.valueOf("false");
+        System.out.println(test);
+
+        BigInteger one = BigInteger.ONE;
+        BigInteger two = one.and(BigInteger.ZERO);
+
+        //NumberUtils.
+        //RandomUtils.
+
+    }
+
+    @Test
+    public void test7() {
+        StaticPerson one = new StaticPerson();
+        String test = one.address;
+        String staticAddr = StaticPerson.address;
+    }
 
     @Test
     public void test6() {
