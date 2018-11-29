@@ -15,6 +15,7 @@ import org.springframework.http.HttpMethod;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
+import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Stream;
 
@@ -46,6 +47,17 @@ public class SimpleTest {
             "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCOdxKM4vLrMnzLXOyjcTCOA62gvNAKio3MA22V\n" +
             "FOhDXAuf8V1V81vVeHSrOv4UYB3aXuk4SbCdg/8XmJ8jK6nss4X/7KBdnFZrD/LswQedJeWcYlDe\n" +
             "gBcFV3Xp87AHBRjMHTFv0f4mpiqwZHmKb9iP2jIlLUBszMeylGO9WmOm5wIDAQAB";
+
+    @Test
+    public void testBigDecimal() {  // ,2, BigDecimal.ROUND_HALF_EVEN
+        BigDecimal num1 = new BigDecimal("10");
+        BigDecimal num2 = new BigDecimal("3");
+        //BigDecimal num3 = num1.divide(num2,2);
+
+        BigDecimal num4 = num1.divide(num2,2,BigDecimal.ROUND_HALF_UP);
+        System.out.println(num4);
+
+    }
 
     @Test
     public void test111() {
