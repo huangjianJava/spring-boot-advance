@@ -1,23 +1,23 @@
 package com.huangj.advance.javabase;
 
-import com.huangj.advance.enums.AssignStatusEnum;
 import com.huangj.advance.javabase.seven.StaticPerson;
-import org.apache.commons.lang3.math.NumberUtils;
+import com.huangj.advance.javabase.tenchapter.abstractandinterface.EmailAlertService;
+import com.huangj.advance.javabase.tenchapter.abstractandinterface.PhoneAlertService;
 import org.junit.Test;
 
 import java.math.BigInteger;
+
 import com.huangj.advance.javabase.tenchapter.Parent;
 import com.huangj.advance.javabase.tenchapter.Son1;
-import com.huangj.advance.javabase.tenchapter.Son2;
 import org.apache.commons.lang3.RandomUtils;
-import org.junit.Test;
+
 import java.util.Arrays;
+
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Author: huangj
@@ -27,86 +27,16 @@ import java.util.Random;
 public class JavaBaseTest {
 
     @Test
-    public void test8() {
-        Boolean test = Boolean.valueOf("false");
-        System.out.println(test);
-
-        BigInteger one = BigInteger.ONE;
-        BigInteger two = one.and(BigInteger.ZERO);
-
-        //NumberUtils.
-        //RandomUtils.
+    public void test101() {
+        EmailAlertService emailAlertService = new EmailAlertService();
+        emailAlertService.alert();
+        System.out.println("===== 分割线 =====");
+        PhoneAlertService phoneAlertService = new PhoneAlertService();
+        phoneAlertService.alert();
     }
 
     @Test
-    public void test10() {
-        Parent p = new Parent();
-        boolean one = p instanceof Son1;
-        System.out.println("one:" + one);
-
-        Son1 son1 = new Son1();
-        boolean two = son1 instanceof Parent;
-        System.out.println("two:" + two);
-
-    }
-
-    @Test
-    public void test9() {
-        int randomInt = RandomUtils.nextInt(2,32);
-        System.out.println("randomInt:" + randomInt);
-    }
-
-    @Test
-    public void test7() {
-        StaticPerson one = new StaticPerson();
-        String test = one.address;
-        String staticAddr = StaticPerson.address;
-        TestTwo testTwo = new TestTwo();
-        /*TestOne one = new TestOne();
-        one.name = "小米";
-        one.address = "地址";
-        System.out.println(one.name + "," + one.address);*/
-    }
-
-    @Test
-    public void test6() {
-       /* Integer test = 1 & 0;
-        Integer test21 = 1 | 0;*/
-        int test = 0;
-        List<Integer> list = Arrays.asList(0, 0, 1);
-        for (int i = 0; i < list.size(); i++) {
-            test = test | list.get(i);
-        }
-        System.out.println("test:" + test);
-    }
-
-    @Test
-    public void test11() {
-        int[] test = new int[3];
-        Arrays.fill(test, 5);
-        for (int t : test) {
-            System.out.println(t);
-        }
-
-        int search = Arrays.binarySearch(test, 5);
-        System.out.println("search:" + search);
-
-        // ArrayUtils
-        boolean isContain = ArrayUtils.contains(test, 5);
-        System.out.println("isContain:" + isContain);
-
-        int[] intArr = ArrayUtils.EMPTY_INT_ARRAY;
-        System.out.println(intArr);
-
-        System.out.println("测试一下");
-        List<Integer> intList = Arrays.asList(1, 5, 2);
-        //List<Integer> sortedList = intList.stream().sorted().collect(Collectors.toList());
-        Collections.sort(intList);
-        intList.forEach(System.out::println);
-    }
-
-    @Test
-    public void test61() {
+    public void test12() {
         int[][] arr4 = new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         System.out.println("原二维数组：");
         for (int i = 0; i < arr4.length; i++) {
@@ -172,6 +102,82 @@ public class JavaBaseTest {
         for (int i : arr) {
             System.out.println(i);
         }
+    }
+
+    @Test
+    public void test11() {
+        int[] test = new int[3];
+        Arrays.fill(test, 5);
+        for (int t : test) {
+            System.out.println(t);
+        }
+
+        int search = Arrays.binarySearch(test, 5);
+        System.out.println("search:" + search);
+
+        // ArrayUtils
+        boolean isContain = ArrayUtils.contains(test, 5);
+        System.out.println("isContain:" + isContain);
+
+        int[] intArr = ArrayUtils.EMPTY_INT_ARRAY;
+        System.out.println(intArr);
+
+        System.out.println("测试一下");
+        List<Integer> intList = Arrays.asList(1, 5, 2);
+        //List<Integer> sortedList = intList.stream().sorted().collect(Collectors.toList());
+        Collections.sort(intList);
+        intList.forEach(System.out::println);
+    }
+
+    @Test
+    public void test10() {
+        Parent p = new Parent();
+        boolean one = p instanceof Son1;
+        System.out.println("one:" + one);
+
+        Son1 son1 = new Son1();
+        boolean two = son1 instanceof Parent;
+        System.out.println("two:" + two);
+
+    }
+
+    @Test
+    public void test9() {
+        int randomInt = RandomUtils.nextInt(2, 32);
+        System.out.println("randomInt:" + randomInt);
+    }
+
+    @Test
+    public void test8() {
+        Boolean test = Boolean.valueOf("false");
+        System.out.println(test);
+
+        BigInteger one = BigInteger.ONE;
+        BigInteger two = one.and(BigInteger.ZERO);
+    }
+
+    @Test
+    public void test7() {
+        StaticPerson one = new StaticPerson();
+        String test = one.address;
+        String staticAddr = StaticPerson.address;
+        TestTwo testTwo = new TestTwo();
+        /*TestOne one = new TestOne();
+        one.name = "小米";
+        one.address = "地址";
+        System.out.println(one.name + "," + one.address);*/
+    }
+
+    @Test
+    public void test6() {
+       /* Integer test = 1 & 0;
+        Integer test21 = 1 | 0;*/
+        int test = 0;
+        List<Integer> list = Arrays.asList(0, 0, 1);
+        for (int i = 0; i < list.size(); i++) {
+            test = test | list.get(i);
+        }
+        System.out.println("test:" + test);
     }
 
     @Test
