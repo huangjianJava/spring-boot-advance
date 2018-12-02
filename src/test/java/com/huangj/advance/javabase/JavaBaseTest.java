@@ -1,5 +1,6 @@
 package com.huangj.advance.javabase;
 
+import com.huangj.advance.dto.TestDto;
 import com.huangj.advance.javabase.seven.StaticPerson;
 import com.huangj.advance.javabase.tenchapter.abstractandinterface.EmailAlertService;
 import com.huangj.advance.javabase.tenchapter.abstractandinterface.PhoneAlertService;
@@ -11,13 +12,10 @@ import com.huangj.advance.javabase.tenchapter.Parent;
 import com.huangj.advance.javabase.tenchapter.Son1;
 import org.apache.commons.lang3.RandomUtils;
 
-import java.util.Arrays;
+import java.util.*;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Author: huangj
@@ -25,6 +23,77 @@ import java.util.List;
  * Date: 2018/11/18
  */
 public class JavaBaseTest {
+
+    @Test
+    public void test143() {
+        TestDto one = TestDto.builder()
+                .name("小明")
+                .totalSales(11L)
+                .build();
+        TestDto two = TestDto.builder()
+                .name("小米")
+                .totalSales(121L)
+                .build();
+        /*Set<TestDto> hashSet = new HashSet<>();
+        hashSet.add(one);
+        hashSet.add(two);
+        for(TestDto dto : hashSet){
+            System.out.println(dto.getName());
+        }*/
+
+        Set<TestDto> treeSet = new TreeSet<>();
+        treeSet.add(one);
+        treeSet.add(two);
+        for(TestDto dto : treeSet){
+            System.out.println(dto.getName());
+        }
+
+    }
+
+    @Test
+    public void test142() {
+        Set<Integer> intSet = new HashSet<>();
+        for (int i = 0; i < 100; i++) {
+            intSet.add(i);
+        }
+
+        System.out.println("=== Iterator 循环");
+        Iterator<Integer> iterator = intSet.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+        System.out.println("=== foreach 循环输出");
+        for (Integer i : intSet){
+            System.out.println(i);
+        }
+    }
+
+    @Test
+    public void test141() {
+        List<Integer> intList = new ArrayList<>();
+        intList.add(null);
+        intList.add(2);
+        intList.add(1);
+        intList.add(3);
+        // 循环List
+        System.out.println("=== iterator 循环输出");
+        Iterator iterator = intList.iterator();
+        while (iterator.hasNext()) {
+            int tempInt = (Integer) iterator.next();
+            System.out.println(tempInt);
+        }
+
+        System.out.println("=== foreach 循环输出");
+        for (Integer i : intList) {
+            System.out.println(i);
+        }
+
+        System.out.println("=== for 循环输出");
+        for (int i = 0; i < intList.size(); i++) {
+            System.out.println(intList.get(i));
+        }
+    }
 
     @Test
     public void test101() {
