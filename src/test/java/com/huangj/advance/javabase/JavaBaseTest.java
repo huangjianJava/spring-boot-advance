@@ -110,14 +110,14 @@ public class JavaBaseTest {
 
     @Test
     public void test143() {
-        TestDto one = TestDto.builder()
+        /*TestDto one = TestDto.builder()
                 .name("小明")
                 .totalSales(11L)
                 .build();
         TestDto two = TestDto.builder()
                 .name("小米")
                 .totalSales(121L)
-                .build();
+                .build();*/
         /*Set<TestDto> hashSet = new HashSet<>();
         hashSet.add(one);
         hashSet.add(two);
@@ -125,12 +125,12 @@ public class JavaBaseTest {
             System.out.println(dto.getName());
         }*/
 
-        Set<TestDto> treeSet = new TreeSet<>();
+        /*Set<TestDto> treeSet = new TreeSet<>();
         treeSet.add(one);
         treeSet.add(two);
         for (TestDto dto : treeSet) {
             System.out.println(dto.getName());
-        }
+        }*/
 
     }
 
