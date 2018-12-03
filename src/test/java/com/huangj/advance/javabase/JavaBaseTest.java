@@ -1,5 +1,8 @@
 package com.huangj.advance.javabase;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ListMultimap;
+import com.google.common.collect.Multimap;
 import com.huangj.advance.dto.TestDto;
 import com.huangj.advance.javabase.seven.StaticPerson;
 import com.huangj.advance.javabase.tenchapter.abstractandinterface.EmailAlertService;
@@ -25,6 +28,87 @@ import org.apache.commons.lang3.StringUtils;
 public class JavaBaseTest {
 
     @Test
+    public void test147() {
+        ListMultimap<String,String> myMultimap = ArrayListMultimap.create();
+
+        // Adding some key/value  ListMultimap
+        myMultimap.put("test","myTest");
+        myMultimap.put("Fruits", "Bannana");
+        myMultimap.put("Fruits", "Apple");
+        myMultimap.put("Fruits", "Pear");
+        myMultimap.put("Fruits", "Pear");
+        myMultimap.put("Vegetables", "Carrot");
+
+        Map<String,Collection<String>> newMap = myMultimap.asMap();
+        
+
+        List<String> valueList = myMultimap.get("Fruits");
+        valueList.forEach(e -> System.out.println(e));
+    }
+
+    @Test
+    public void test146() {
+        Map<Integer, List<String>> map = new HashMap();
+        map.put(1,Arrays.asList("a","b"));
+        map.put(1,Arrays.asList("a","b"));
+        List<String> list = map.get(1);
+    }
+
+    @Test
+    public void test145() {
+        Map<Integer, String> map = new HashMap();
+        map.put(1, "张三");
+        map.put(2, "李四");
+        map.put(3, "王五");
+
+        System.out.println("===iterator 循环方式");
+        Set<Integer> keySet = map.keySet();
+        Iterator<Integer> iterator = keySet.iterator();
+        while (iterator.hasNext()) {
+            String value = map.get(iterator.next());
+            System.out.println(value);
+        }
+
+        System.out.println("===for 循环方式");
+        Set<Map.Entry<Integer, String>> entrySet = map.entrySet();
+        for(Map.Entry<Integer, String> entry : entrySet){
+            int key = entry.getKey();
+            String value = entry.getValue();
+            System.out.println(key + "-" + value);
+        }
+    }
+
+    @Test
+    public void test144() {
+        String[] strArray = new String[]{"a", "b", "c", "a"};
+        List<String> list = Arrays.asList(strArray);
+        /*System.out.println("list size:" + list.size());
+        list.add("test");*/
+        System.out.println(list.size());
+        /*Set<String> set = new HashSet<>(list);
+        System.out.println("set size:" + set.size());
+        set.add("test");
+        System.out.println("final set size:" + set.size());*/
+        Set<String> set = new HashSet<>();
+        set.addAll(list);
+        System.out.println("final set size:" + set.size());
+
+        /*TestDto one = TestDto.builder()
+                .name("小明")
+                .totalSales(11L)
+                .build();
+        TestDto two = TestDto.builder()
+                .name("小明")
+                .totalSales(11L)
+                .build();
+        List<TestDto> list1 = new ArrayList<>();
+        list1.add(one);
+        list1.add(two);
+        Set<TestDto> set1 = new HashSet<>(list1);*/
+
+    }
+
+    @Test
     public void test143() {
         TestDto one = TestDto.builder()
                 .name("小明")
@@ -44,7 +128,7 @@ public class JavaBaseTest {
         Set<TestDto> treeSet = new TreeSet<>();
         treeSet.add(one);
         treeSet.add(two);
-        for(TestDto dto : treeSet){
+        for (TestDto dto : treeSet) {
             System.out.println(dto.getName());
         }
 
@@ -64,7 +148,7 @@ public class JavaBaseTest {
         }
 
         System.out.println("=== foreach 循环输出");
-        for (Integer i : intSet){
+        for (Integer i : intSet) {
             System.out.println(i);
         }
     }
