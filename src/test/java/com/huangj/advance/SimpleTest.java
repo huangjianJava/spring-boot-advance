@@ -49,6 +49,13 @@ public class SimpleTest {
             "gBcFV3Xp87AHBRjMHTFv0f4mpiqwZHmKb9iP2jIlLUBszMeylGO9WmOm5wIDAQAB";
 
     @Test
+    public void test22() {
+        Long a = 11L;
+        String test = a + "-" + "222";
+        System.out.println(test);
+    }
+
+        @Test
     public void testBigDecimal() {  // ,2, BigDecimal.ROUND_HALF_EVEN
         BigDecimal num1 = new BigDecimal("10");
         BigDecimal num2 = new BigDecimal("3");

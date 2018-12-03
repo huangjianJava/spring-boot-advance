@@ -7,6 +7,10 @@ package com.huangj.advance.javabase.tenchapter;
  */
 public class Parent {
 
+    public final void finalMethod(){
+        System.out.println("父类Parent的 finalMethod方法");
+    }
+
     public void say(){
         System.out.println("parent");
     }
