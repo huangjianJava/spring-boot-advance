@@ -5,16 +5,23 @@ import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Multimap;
 import com.huangj.advance.dto.TestDto;
 import com.huangj.advance.javabase.seven.StaticPerson;
+import com.huangj.advance.javabase.sixteenchapter.AnnotationTest;
+import com.huangj.advance.javabase.sixteenchapter.MethodAnnotation;
 import com.huangj.advance.javabase.tenchapter.abstractandinterface.EmailAlertService;
 import com.huangj.advance.javabase.tenchapter.abstractandinterface.PhoneAlertService;
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.junit.Test;
 
+import java.io.File;
+import java.lang.reflect.Method;
 import java.math.BigInteger;
 
 import com.huangj.advance.javabase.tenchapter.Parent;
 import com.huangj.advance.javabase.tenchapter.Son1;
 import org.apache.commons.lang3.RandomUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import org.apache.commons.lang3.ArrayUtils;
@@ -28,19 +35,57 @@ import org.apache.commons.lang3.StringUtils;
 public class JavaBaseTest {
 
     @Test
+    public void test161() {
+        AnnotationTest anno = new AnnotationTest();
+        Class classTest = anno.getClass();
+
+        // 获取类中所有的方法
+        Method[] methods = classTest.getDeclaredMethods();
+        for (Method method : methods) {
+            // 判断方法是否有被指定注解注释
+            if (method.isAnnotationPresent(MethodAnnotation.class)) {
+                String name = method.getName();
+                MethodAnnotation methodAnnotation = method.getAnnotation(MethodAnnotation.class);
+                String displayDes = methodAnnotation.display();
+                System.out.println("方法名:" + name + ",注解注释的信息:" + displayDes);
+            }
+        }
+    }
+
+    @Test
+    public void test151() {
+        //当前日期
+        Date date = new Date();
+        //格式化并转换String类型
+        String dir = DateFormatUtils.format(date, "yyyy/MM/dd");
+        String path = "D:/" + dir;
+        System.out.println("path:" + path);
+
+        //创建文件夹
+        File f = new File(path);
+        if (!f.exists()) {
+            System.out.println("创建目录");
+            f.mkdirs();
+        } else {
+            System.out.println("目录已经存在");
+        }
+
+    }
+
+    @Test
     public void test147() {
-        ListMultimap<String,String> myMultimap = ArrayListMultimap.create();
+        ListMultimap<String, String> myMultimap = ArrayListMultimap.create();
 
         // Adding some key/value  ListMultimap
-        myMultimap.put("test","myTest");
+        myMultimap.put("test", "myTest");
         myMultimap.put("Fruits", "Bannana");
         myMultimap.put("Fruits", "Apple");
         myMultimap.put("Fruits", "Pear");
         myMultimap.put("Fruits", "Pear");
         myMultimap.put("Vegetables", "Carrot");
 
-        Map<String,Collection<String>> newMap = myMultimap.asMap();
-        
+        Map<String, Collection<String>> newMap = myMultimap.asMap();
+
 
         List<String> valueList = myMultimap.get("Fruits");
         valueList.forEach(e -> System.out.println(e));
@@ -49,8 +94,8 @@ public class JavaBaseTest {
     @Test
     public void test146() {
         Map<Integer, List<String>> map = new HashMap();
-        map.put(1,Arrays.asList("a","b"));
-        map.put(1,Arrays.asList("a","b"));
+        map.put(1, Arrays.asList("a", "b"));
+        map.put(1, Arrays.asList("a", "b"));
         List<String> list = map.get(1);
     }
 
@@ -71,7 +116,7 @@ public class JavaBaseTest {
 
         System.out.println("===for 循环方式");
         Set<Map.Entry<Integer, String>> entrySet = map.entrySet();
-        for(Map.Entry<Integer, String> entry : entrySet){
+        for (Map.Entry<Integer, String> entry : entrySet) {
             int key = entry.getKey();
             String value = entry.getValue();
             System.out.println(key + "-" + value);
