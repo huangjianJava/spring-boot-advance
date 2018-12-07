@@ -17,6 +17,7 @@ import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -50,9 +51,14 @@ public class SimpleTest {
 
     @Test
     public void test22() {
-        Long a = 11L;
+        List<String> list = Collections.emptyList();
+        /*List<String> nameList = Arrays.asList("小米","小米","小名");
+        List<String> nameList2 = nameList.stream()
+                .distinct()
+                .collect(Collectors.toList());*/
+        /*Long a = 11L;
         String test = a + "-" + "222";
-        System.out.println(test);
+        System.out.println(test);*/
     }
 
         @Test

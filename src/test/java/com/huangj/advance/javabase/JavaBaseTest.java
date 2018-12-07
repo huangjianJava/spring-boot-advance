@@ -7,6 +7,10 @@ import com.huangj.advance.dto.TestDto;
 import com.huangj.advance.javabase.seven.StaticPerson;
 import com.huangj.advance.javabase.tenchapter.abstractandinterface.EmailAlertService;
 import com.huangj.advance.javabase.tenchapter.abstractandinterface.PhoneAlertService;
+import org.apache.commons.io.CopyUtils;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 
 import java.math.BigInteger;
@@ -28,6 +32,14 @@ import org.apache.commons.lang3.StringUtils;
 public class JavaBaseTest {
 
     @Test
+    public void test151() {
+        // FileUtils
+        // IOUtils
+        // FilenameUtils
+
+    }
+
+    @Test
     public void test147() {
         ListMultimap<String,String> myMultimap = ArrayListMultimap.create();
 
@@ -40,7 +52,7 @@ public class JavaBaseTest {
         myMultimap.put("Vegetables", "Carrot");
 
         Map<String,Collection<String>> newMap = myMultimap.asMap();
-        
+
 
         List<String> valueList = myMultimap.get("Fruits");
         valueList.forEach(e -> System.out.println(e));
