@@ -4,6 +4,9 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Multimap;
 import com.huangj.advance.dto.TestDto;
+import com.huangj.advance.enums.ConstantInterface;
+import com.huangj.advance.enums.TestEnum;
+import com.huangj.advance.enums.TestEnum2;
 import com.huangj.advance.javabase.seven.StaticPerson;
 import com.huangj.advance.javabase.sixteenchapter.AnnotationTest;
 import com.huangj.advance.javabase.sixteenchapter.MethodAnnotation;
@@ -36,6 +39,21 @@ import org.apache.commons.lang3.StringUtils;
  * Date: 2018/11/18
  */
 public class JavaBaseTest {
+
+    @Test
+    public void test171() {
+        int constantA = ConstantInterface.CONSTANT_A;
+        String name = TestEnum.CONSTANT_A.name();
+        TestEnum b = TestEnum.CONSTANT_B;
+        TestEnum b1 = TestEnum.CONSTANT_B;
+
+        boolean one = TestEnum2.CON_1.satisfy();
+        boolean two = TestEnum2.CON_2.satisfy();
+
+        String oneStr = TestEnum2.CON_1.display();
+        String twoStr = TestEnum2.CON_2.display();
+
+    }
 
     @Test
     public void test152() {
