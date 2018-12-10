@@ -51,7 +51,11 @@ public class SimpleTest {
 
     @Test
     public void test22() {
-        List<String> list = Collections.emptyList();
+        List<Long> nameList = Arrays.asList(1L,2L,3L);
+        String json = JSON.toJSONString(nameList);
+        System.out.println(json);
+
+        //List<String> list = Collections.emptyList();
         /*List<String> nameList = Arrays.asList("小米","小米","小名");
         List<String> nameList2 = nameList.stream()
                 .distinct()

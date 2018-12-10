@@ -8,6 +8,7 @@ import com.huangj.advance.enums.ConstantInterface;
 import com.huangj.advance.enums.TestEnum;
 import com.huangj.advance.enums.TestEnum2;
 import com.huangj.advance.javabase.seven.StaticPerson;
+import com.huangj.advance.javabase.seventeenchapter.*;
 import com.huangj.advance.javabase.sixteenchapter.AnnotationTest;
 import com.huangj.advance.javabase.sixteenchapter.MethodAnnotation;
 import com.huangj.advance.javabase.tenchapter.abstractandinterface.EmailAlertService;
@@ -39,6 +40,53 @@ import org.apache.commons.lang3.StringUtils;
  * Date: 2018/11/18
  */
 public class JavaBaseTest {
+
+    @Test
+    public void test172() {
+        /*GenericClass one = new GenericClass("第一个","小明");
+        System.out.println("one:" + one.getTestAttribute());
+        GenericClass two = new GenericClass(11,"小明");
+        System.out.println("two:" + two.getTestAttribute());
+        GenericClass<String> three = new GenericClass<>("第三个","小花");*/
+
+        /*GenericClass2 one = new GenericClass2("第一个",1);
+        GenericClass2<String,String> two = new GenericClass2<>("1","2");*/
+        //GenericClassSon<String> one = new GenericClassSon<>("1","2");
+
+        /*InterfaceClass one = new InterfaceClass();
+        String result = one.display("测试一下");
+        System.out.println("result:" + result);*/
+
+        /*InterfaceClass2<Integer> one = new InterfaceClass2<>();
+        int result = one.display(123);
+        System.out.println(result);*/
+
+        /*List<Number> stringArrayList = new ArrayList<>();
+        List<Integer> integerArrayList = new ArrayList<>();
+
+        Class classStringArrayList = stringArrayList.getClass();
+        Class classIntegerArrayList = integerArrayList.getClass();
+
+        if (classStringArrayList.equals(classIntegerArrayList)) {
+            System.out.println("相等");
+        } else {
+            System.out.println("不相等");
+        }*/
+
+        /*GenericClass<String> one = new GenericClass<>("测试");
+        GenericClass<Integer> two = new GenericClass<>(1);
+        TestUtil.show(one);
+        TestUtil.show(two);*/
+       /* GenericClass<String> one = new GenericClass<>("测试");
+        GenericClass<Integer> two = new GenericClass<>(1);
+        TestUtil.show2(one);
+        TestUtil.show2(two);*/
+
+        //String one = TestUtil.say("1t","3t","2t");
+        //System.out.println(one);
+        List<?>[] ls = new ArrayList<?>[10];
+
+    }
 
     @Test
     public void test171() {
