@@ -478,6 +478,16 @@ public class JavaBaseTest {
     }
 
     @Test
+    public void myTest() {
+        String one = new String("hello");
+        String two = "hello";
+
+        boolean equalsOne = one == two;
+        boolean equalsTwo = one.equals(two);
+        System.out.println(equalsOne + "----" + equalsTwo);
+    }
+
+    @Test
     public void test1() {
         String oneStr = "第一个";
         String twoStr = "第一个";
